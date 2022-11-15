@@ -13,7 +13,7 @@ const membershipSchema = mongoose.Schema({
      end_date : {
         type : Number
      },
-     packgage : {
+     package : {
        type : mongoose.Schema.Types.ObjectId,
        ref : 'Package',
        

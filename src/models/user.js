@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
- userRoleEnum= ['user', 'admin']
+// const bcrypt = require('bcryptjs')
+userRoleEnum= ['user', 'admin']
 const userSchema = mongoose.Schema({
     name : {
         type : String,
@@ -45,6 +46,24 @@ const userSchema = mongoose.Schema({
         trim : true,
      }
 })
+
+userSchema.statics.findByPhoneNumber = async (phone_number)=> {
+    const user = await User.findOne({phone_number})
+    
+    if(!user){
+     throw new Error('Unable to login')
+  }
+
+    // const isMatch = await bcrypt.compare(phone_number, user.phone_number)
+
+    //  if(!isMatch){
+    //    throw new Error('Unable to login')
+    //  }
+
+   return user
+}
+
 const User = mongoose.model('User', userSchema)
 
-module.exports = {User, userRoleEnum}
+module.exports = User
+// module.exports = {User, userRoleEnum}

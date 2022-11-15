@@ -23,6 +23,7 @@ const paymentSchema = mongoose.Schema({
      paid_via : {
         type : String ,
         enum : ['e-sewa' ,'Khalti'],
+        default:"e-sewa",
         required : true
      }
 })

@@ -20,7 +20,6 @@ const packageSchema = mongoose.Schema({
          type : String ,
          trim : true,
      },
-
      price : {
         type : String , 
         trim : true,
